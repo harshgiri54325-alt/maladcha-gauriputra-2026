@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "maladcha-gauriputra-final",
+  "name": "maladcha-gauriputra-2026",
   "main": "./src/index.js",
   "compatibility_date": "2026-09-10",
   "workers_dev": true,
