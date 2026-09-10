@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#09090b">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f8f1e5">
 <meta name="description" content="Maladcha Gauriputra – Bappa Seva 2026">
 <title>Maladcha Gauriputra – Bappa Seva 2026</title>
 
@@ -15,28 +15,44 @@
 
 <style>
 :root{
-  --bg:#08090b;
-  --card:#111318;
-  --text:#f7f7f5;
-  --muted:#a8abb4;
-  --gold:#e7b85b;
-  --gold2:#ffd98a;
-  --line:rgba(255,255,255,.09);
-  --danger:#ff8585;
+  --cream:#f8f1e5;
+  --cream2:#fffaf2;
+  --paper:#f3e5d2;
+  --ink:#281911;
+  --muted:#75675b;
+  --saffron:#d66b1f;
+  --orange:#ed9638;
+  --maroon:#7e2526;
+  --gold:#c99a45;
+  --line:rgba(86,51,27,.14);
+  --shadow:0 24px 70px rgba(91,49,20,.13);
 }
 
 *{box-sizing:border-box}
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   margin:0;
-  background:
-    radial-gradient(circle at 80% 0,#34210d 0,transparent 30%),
-    var(--bg);
-  color:var(--text);
+  background:var(--cream);
+  color:var(--ink);
   font-family:"DM Sans",sans-serif;
   line-height:1.6;
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
+  background-image:
+    radial-gradient(rgba(122,74,36,.14) 1px,transparent 1px);
+  background-size:26px 26px;
+  z-index:-2;
 }
 
 a{
@@ -44,28 +60,34 @@ a{
   text-decoration:none;
 }
 
-button,input,select{font:inherit}
+button,input,select{
+  font:inherit;
+}
 
-button{cursor:pointer}
+button{
+  cursor:pointer;
+}
 
 .container{
-  width:min(1120px,92%);
+  width:min(1160px,92%);
   margin:auto;
 }
+
+/* NAV */
 
 .nav{
   position:fixed;
   top:0;
   left:0;
   right:0;
-  z-index:20;
-  background:rgba(8,9,11,.72);
+  z-index:100;
+  background:rgba(255,250,242,.84);
   backdrop-filter:blur(18px);
   border-bottom:1px solid var(--line);
 }
 
 .navin{
-  height:72px;
+  height:76px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -75,85 +97,127 @@ button{cursor:pointer}
 .brand{
   display:flex;
   align-items:center;
-  gap:11px;
+  gap:12px;
   font-weight:800;
 }
 
 .brand img{
-  width:42px;
-  height:42px;
+  width:46px;
+  height:46px;
   border-radius:50%;
   object-fit:cover;
-  border:1px solid rgba(255,255,255,.2);
+  border:2px solid rgba(201,154,69,.6);
+  box-shadow:0 7px 22px rgba(80,35,10,.15);
 }
 
 .links{
   display:flex;
-  gap:24px;
-  color:#d7d8dc;
+  gap:26px;
+  color:#5e4d42;
   font-size:14px;
+  font-weight:700;
 }
 
-.links a:hover{color:var(--gold2)}
+.links a{
+  transition:.2s;
+}
+
+.links a:hover{
+  color:var(--saffron);
+}
 
 .lang{
-  background:#111318;
-  color:#fff;
+  background:#fffaf1;
+  color:var(--ink);
   border:1px solid var(--line);
-  border-radius:10px;
-  padding:7px 9px;
+  border-radius:12px;
+  padding:9px 12px;
 }
 
+/* HERO */
+
 .hero{
-  min-height:100vh;
-  display:grid;
-  place-items:center;
+  min-height:100svh;
+  padding-top:76px;
   position:relative;
+  display:grid;
+  align-items:center;
   overflow:hidden;
+
   background:
     linear-gradient(
       90deg,
-      rgba(4,5,7,.94),
-      rgba(4,5,7,.65) 48%,
-      rgba(4,5,7,.2)
+      rgba(39,20,12,.78),
+      rgba(52,25,13,.38) 55%,
+      rgba(52,25,13,.08)
     ),
-    url("/bappa-hero.jpg") center/cover no-repeat;
+    url("bappa-hero.jpg") center/cover no-repeat;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      circle at 75% 35%,
+      rgba(255,202,116,.22),
+      transparent 28%
+    );
+  animation:glow 5s ease-in-out infinite alternate;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:35%;
+  background:linear-gradient(transparent,var(--cream));
 }
 
 .heroIn{
   position:relative;
-  z-index:1;
-  padding:130px 0 80px;
+  z-index:3;
+  padding:90px 0 130px;
 }
 
 .eyebrow{
   display:inline-flex;
-  padding:7px 12px;
-  border:1px solid rgba(231,184,91,.35);
-  background:rgba(231,184,91,.08);
+  align-items:center;
+  padding:9px 15px;
   border-radius:999px;
-  color:var(--gold2);
+  color:#ffe3ae;
+  border:1px solid rgba(255,226,171,.55);
+  background:rgba(126,37,38,.4);
+  backdrop-filter:blur(8px);
   font-size:12px;
   font-weight:800;
-  letter-spacing:1.2px;
-  text-transform:uppercase;
+  letter-spacing:1.8px;
 }
 
 .hero h1{
   font-family:"Playfair Display",serif;
-  font-size:clamp(48px,8vw,92px);
+  color:#fffaf1;
+  font-size:clamp(48px,8vw,94px);
   line-height:.98;
-  max-width:850px;
-  margin:24px 0 18px;
+  max-width:900px;
+  margin:25px 0 20px;
+  letter-spacing:-2px;
+  text-shadow:0 12px 45px rgba(0,0,0,.3);
+  animation:heroIn 1s ease both;
 }
 
-.hero h1 span{color:var(--gold2)}
+.hero h1 span{
+  color:#ffd77c;
+}
 
 .hero p{
   max-width:680px;
-  color:#dedfe2;
+  color:#fff1df;
   font-size:clamp(17px,2.2vw,21px);
-  margin:0 0 28px;
+  margin:0 0 30px;
 }
 
 .actions{
@@ -165,139 +229,319 @@ button{cursor:pointer}
 .btn{
   border:0;
   border-radius:14px;
-  padding:13px 19px;
+  padding:14px 21px;
   font-weight:800;
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:8px;
+  transition:.25s ease;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 35px rgba(112,49,15,.18);
 }
 
 .primary{
-  background:linear-gradient(135deg,#ffd987,#c98c2e);
-  color:#171007;
-  box-shadow:0 12px 35px rgba(231,184,91,.18);
+  background:linear-gradient(135deg,#ffd77c,#df8127);
+  color:#2a170a;
+  box-shadow:0 14px 34px rgba(214,107,31,.24);
 }
 
 .secondary{
-  background:rgba(255,255,255,.06);
-  border:1px solid var(--line);
-  color:#fff;
+  background:rgba(255,250,242,.78);
+  border:1px solid rgba(255,255,255,.65);
+  color:#402419;
+  backdrop-filter:blur(10px);
 }
 
-section{padding:90px 0}
+.heroBadge{
+  position:absolute;
+  right:5%;
+  bottom:17%;
+  z-index:5;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  background:rgba(255,248,231,.88);
+  border:1px solid rgba(201,154,69,.65);
+  box-shadow:0 25px 70px rgba(49,22,12,.2);
+  animation:float 5s ease-in-out infinite;
+}
+
+.heroBadge strong{
+  font-family:"Playfair Display",serif;
+  font-size:30px;
+  color:var(--maroon);
+  line-height:1;
+}
+
+.heroBadge span{
+  display:block;
+  font-size:11px;
+  font-weight:800;
+  color:#765033;
+  letter-spacing:1px;
+}
+
+/* SECTIONS */
+
+section{
+  padding:105px 0;
+  position:relative;
+}
 
 .sectionHead{
-  max-width:720px;
-  margin-bottom:34px;
+  max-width:760px;
+  margin-bottom:40px;
 }
 
 .kicker{
-  color:var(--gold2);
+  color:var(--saffron);
   font-size:12px;
   font-weight:800;
+  letter-spacing:1.8px;
   text-transform:uppercase;
-  letter-spacing:1.5px;
 }
 
 .sectionHead h2{
   font-family:"Playfair Display",serif;
-  font-size:clamp(34px,5vw,54px);
-  line-height:1.05;
-  margin:8px 0 12px;
+  font-size:clamp(38px,5.5vw,62px);
+  line-height:1.03;
+  margin:9px 0 14px;
+  letter-spacing:-1px;
 }
 
 .sectionHead p{
   color:var(--muted);
+  font-size:17px;
+  max-width:700px;
   margin:0;
+}
+
+/* SEVA */
+
+.sevaWrap{
+  background:linear-gradient(180deg,var(--cream),#f3e5d2);
 }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:16px;
+  gap:18px;
 }
 
 .card{
-  background:linear-gradient(
-    145deg,
-    rgba(255,255,255,.06),
-    rgba(255,255,255,.025)
-  );
+  position:relative;
+  background:rgba(255,252,246,.86);
   border:1px solid var(--line);
-  border-radius:22px;
-  padding:24px;
-  box-shadow:0 18px 55px rgba(0,0,0,.2);
+  border-radius:26px;
+  padding:28px;
+  min-height:210px;
+  box-shadow:var(--shadow);
+  transform-style:preserve-3d;
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease;
 }
 
-.card h3{margin:0 0 8px}
+.card:hover{
+  box-shadow:0 30px 80px rgba(91,49,20,.18);
+}
+
+.card:before{
+  content:"";
+  position:absolute;
+  inset:1px;
+  border-radius:25px;
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,.9),
+    transparent 50%
+  );
+  pointer-events:none;
+}
+
+.icon{
+  width:52px;
+  height:52px;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,#fff0c8,#f4d39a);
+  color:var(--maroon);
+  font-size:23px;
+  margin-bottom:20px;
+  box-shadow:0 8px 22px rgba(143,80,27,.1);
+  transform:translateZ(18px);
+}
+
+.card h3{
+  position:relative;
+  transform:translateZ(12px);
+  margin:0 0 8px;
+  font-size:20px;
+}
 
 .card p{
+  position:relative;
+  transform:translateZ(12px);
   margin:0;
   color:var(--muted);
   font-size:14px;
 }
 
-.icon{
-  width:46px;
-  height:46px;
-  border-radius:14px;
-  display:grid;
-  place-items:center;
-  background:rgba(231,184,91,.1);
-  color:var(--gold2);
-  font-size:21px;
-  margin-bottom:16px;
-}
+/* EVENTS */
 
 .events{
   display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:18px;
+  grid-template-columns:1.25fr .75fr;
+  gap:20px;
+}
+
+.eventCard{
+  background:#fffaf2;
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:28px;
+  box-shadow:var(--shadow);
 }
 
 .event{
   display:flex;
-  gap:18px;
-  padding:18px 0;
+  gap:20px;
+  padding:20px 0;
   border-bottom:1px solid var(--line);
 }
 
-.event:last-child{border-bottom:0}
-
-.date{
-  min-width:75px;
-  color:var(--gold2);
-  font-weight:800;
+.event:last-child{
+  border-bottom:0;
 }
 
-.event strong{display:block}
+.date{
+  min-width:78px;
+  color:var(--saffron);
+  font-weight:800;
+  font-size:13px;
+}
 
-.event small{color:var(--muted)}
+.event strong{
+  display:block;
+  font-size:17px;
+}
+
+.event small{
+  color:var(--muted);
+}
+
+.locationCard{
+  background:linear-gradient(145deg,#7e2526,#a9472c);
+  color:#fff6e8;
+  border-radius:28px;
+  padding:32px;
+  box-shadow:0 25px 70px rgba(126,37,38,.2);
+  position:relative;
+  overflow:hidden;
+}
+
+.locationCard:after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  right:-90px;
+  top:-80px;
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:
+    0 0 0 28px rgba(255,255,255,.04),
+    0 0 0 58px rgba(255,255,255,.03);
+}
+
+.locationCard h3{
+  font-family:"Playfair Display",serif;
+  font-size:36px;
+  margin:0 0 12px;
+}
+
+.locationCard p{
+  color:#ffe7d0;
+}
+
+/* GALLERY */
 
 .gallery{
   display:grid;
-  grid-template-columns:1.3fr .7fr;
-  gap:16px;
+  grid-template-columns:1.35fr .65fr;
+  gap:18px;
+  min-height:640px;
 }
 
-.gallery img{
+.galleryFrame{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+}
+
+.galleryFrame img{
   width:100%;
   height:100%;
-  min-height:240px;
   object-fit:cover;
-  border-radius:22px;
+  display:block;
+  border-radius:28px;
   border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  transition:transform .7s ease;
+}
+
+.galleryFrame:hover img{
+  transform:scale(1.045);
+}
+
+.galleryMain{
+  min-height:640px;
 }
 
 .gallerySide{
   display:grid;
-  gap:16px;
+  grid-template-rows:1fr 1fr;
+  gap:18px;
 }
 
 .gallerySide img{
   min-height:0;
-  height:100%;
+}
+
+.galleryFrame:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    transparent 55%,
+    rgba(38,18,10,.46)
+  );
+  pointer-events:none;
+}
+
+.galleryCaption{
+  position:absolute;
+  z-index:3;
+  left:24px;
+  bottom:20px;
+  color:#fff;
+  font-weight:800;
+  font-size:15px;
+}
+
+/* DONATION */
+
+.contribute{
+  background:linear-gradient(180deg,#f3e5d2,#ead3b8);
 }
 
 .donateBox{
@@ -307,58 +551,76 @@ section{padding:90px 0}
 }
 
 .donateCopy{
-  padding:34px;
-  border-radius:28px;
-  background:linear-gradient(145deg,#17130c,#0f1014);
-  border:1px solid rgba(231,184,91,.2);
+  padding:40px;
+  border-radius:30px;
+  background:linear-gradient(145deg,#7e2526,#a84b2d);
+  color:#fff7e9;
+  box-shadow:0 28px 80px rgba(126,37,38,.2);
+  position:relative;
+  overflow:hidden;
+}
+
+.donateCopy:after{
+  content:"ॐ";
+  position:absolute;
+  right:-18px;
+  bottom:-55px;
+  font-family:serif;
+  font-size:210px;
+  color:rgba(255,255,255,.07);
 }
 
 .donateCopy h2{
   font-family:"Playfair Display",serif;
-  font-size:46px;
-  line-height:1.05;
-  margin:8px 0 14px;
+  font-size:clamp(42px,5vw,58px);
+  line-height:1.02;
+  margin:9px 0 16px;
 }
 
-.donateCopy p{color:var(--muted)}
+.donateCopy p{
+  color:#ffe8d2;
+  font-size:17px;
+}
 
 .trust{
   display:flex;
   gap:9px;
   align-items:flex-start;
-  margin-top:20px;
-  color:#cfd1d5;
+  margin-top:25px;
+  color:#ffe8d2;
   font-size:13px;
 }
 
 .form{
-  padding:28px;
+  padding:30px;
   border:1px solid var(--line);
-  border-radius:28px;
-  background:rgba(255,255,255,.035);
+  border-radius:30px;
+  background:rgba(255,252,246,.94);
+  box-shadow:var(--shadow);
 }
 
 label{
   display:block;
   font-size:12px;
-  color:#cfd1d5;
-  font-weight:700;
+  color:#5e4d42;
+  font-weight:800;
   margin:0 0 7px;
 }
 
 input{
   width:100%;
-  background:#0b0d10;
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:13px 14px;
-  color:#fff;
+  background:#fff;
+  border:1px solid rgba(86,51,27,.16);
+  border-radius:13px;
+  padding:14px;
+  color:var(--ink);
   outline:none;
-  margin-bottom:15px;
+  margin-bottom:16px;
 }
 
 input:focus{
-  border-color:rgba(231,184,91,.65);
+  border-color:rgba(214,107,31,.7);
+  box-shadow:0 0 0 4px rgba(214,107,31,.08);
 }
 
 .amounts{
@@ -369,28 +631,28 @@ input:focus{
 }
 
 .amountBtn{
-  padding:11px;
-  border-radius:12px;
-  background:#0b0d10;
-  color:#fff;
+  padding:12px;
+  border-radius:13px;
+  background:#fff;
   border:1px solid var(--line);
+  color:var(--ink);
   font-weight:800;
 }
 
 .amountBtn.active{
-  border-color:var(--gold);
-  color:var(--gold2);
-  background:rgba(231,184,91,.08);
+  border-color:var(--saffron);
+  color:var(--saffron);
+  background:#fff3df;
 }
 
 .form .primary{
   width:100%;
-  padding:15px;
+  padding:16px;
 }
 
 .fine{
   font-size:11px;
-  color:#858994;
+  color:#8b7c70;
   text-align:center;
   margin:12px 0 0;
 }
@@ -403,33 +665,42 @@ input:focus{
   font-size:13px;
 }
 
-.status.show{display:block}
+.status.show{
+  display:block;
+}
 
 .status.error{
-  background:rgba(255,119,119,.1);
-  color:#ffb0b0;
+  background:#fff0ef;
+  color:#a53e36;
 }
 
 .status.success{
-  background:rgba(85,216,139,.1);
-  color:#a9f1c6;
+  background:#eff9ef;
+  color:#37783d;
 }
 
-.certificate{display:none}
+/* CERTIFICATE */
 
-.certificate.show{display:block}
+.certificate{
+  display:none;
+  background:#f6ead9;
+}
+
+.certificate.show{
+  display:block;
+}
 
 .certWrap{
-  background:#eee;
-  color:#18130b;
+  background:#ead8ba;
   padding:10px;
-  border-radius:24px;
+  border-radius:28px;
   max-width:850px;
   margin:auto;
+  box-shadow:var(--shadow);
 }
 
 .cert{
-  padding:50px 35px;
+  padding:55px 35px;
   text-align:center;
   background:linear-gradient(135deg,#fffaf0,#fff);
   border:5px double #c89a46;
@@ -487,14 +758,17 @@ input:focus{
 }
 
 .certActions .btn{
-  background:#16120c;
+  background:#7e2526;
   color:#fff;
 }
 
+/* FOOTER */
+
 .footer{
-  padding:50px 0;
+  padding:55px 0;
   border-top:1px solid var(--line);
-  color:var(--muted);
+  background:#f3e5d2;
+  color:#76685d;
   font-size:13px;
 }
 
@@ -505,81 +779,220 @@ input:focus{
   flex-wrap:wrap;
 }
 
+.footin strong{
+  color:#3c2418;
+}
+
+/* MODAL */
+
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.78);
+  background:rgba(42,21,10,.48);
   backdrop-filter:blur(10px);
   display:none;
   place-items:center;
-  z-index:50;
+  z-index:200;
   padding:20px;
 }
 
-.modal.show{display:grid}
+.modal.show{
+  display:grid;
+}
 
 .modalBox{
   width:min(420px,100%);
-  background:#13151a;
+  background:#fffaf2;
   border:1px solid var(--line);
   border-radius:22px;
   padding:28px;
   text-align:center;
+  box-shadow:var(--shadow);
 }
 
 .spinner{
   width:42px;
   height:42px;
-  border:3px solid #333;
-  border-top-color:var(--gold);
+  border:3px solid #eadbc8;
+  border-top-color:var(--saffron);
   border-radius:50%;
   animation:spin 1s linear infinite;
   margin:0 auto 18px;
+}
+
+/* ANIMATION */
+
+.reveal{
+  opacity:0;
+  transform:translateY(28px) scale(.985);
+  transition:
+    opacity .7s ease,
+    transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:none;
 }
 
 @keyframes spin{
   to{transform:rotate(360deg)}
 }
 
+@keyframes float{
+  50%{
+    transform:translateY(-12px) rotate(3deg);
+  }
+}
+
+@keyframes glow{
+  from{opacity:.55}
+  to{opacity:1}
+}
+
+@keyframes heroIn{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+/* MOBILE */
+
 @media(max-width:850px){
-  .links{display:none}
-  .grid{grid-template-columns:1fr 1fr}
-  .events,.donateBox,.gallery{grid-template-columns:1fr}
-  .hero h1{font-size:54px}
-  .donateCopy h2{font-size:38px}
+
+  .links{
+    display:none;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .events,
+  .donateBox,
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .gallery{
+    min-height:auto;
+  }
+
+  .galleryMain{
+    min-height:440px;
+  }
+
+  .heroBadge{
+    display:none;
+  }
 }
 
 @media(max-width:560px){
-  section{padding:70px 0}
-  .grid{grid-template-columns:1fr}
-  .navin{height:64px}
-  .hero h1{font-size:46px}
-  .cert{padding:35px 18px}
-  .cert h2{font-size:30px}
-  .cert .name{font-size:30px}
-  .certWrap{padding:6px}
+
+  section{
+    padding:76px 0;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .navin{
+    height:68px;
+  }
+
+  .brand span{
+    font-size:15px;
+  }
+
+  .brand img{
+    width:40px;
+    height:40px;
+  }
+
+  .hero{
+    min-height:92svh;
+  }
+
+  .heroIn{
+    padding:80px 0 110px;
+  }
+
+  .hero h1{
+    font-size:47px;
+    letter-spacing:-1.4px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .actions .btn{
+    flex:1;
+  }
+
+  .card,
+  .eventCard,
+  .donateCopy,
+  .form{
+    border-radius:22px;
+  }
+
+  .galleryMain{
+    min-height:420px;
+  }
+
+  .gallerySide{
+    height:360px;
+  }
+
+  .donateCopy{
+    padding:30px;
+  }
+
+  .cert{
+    padding:35px 18px;
+  }
+
+  .cert h2{
+    font-size:30px;
+  }
+
+  .cert .name{
+    font-size:30px;
+  }
+
+  .certWrap{
+    padding:6px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav class="nav">
 <div class="container navin">
 
 <a class="brand" href="#">
-<img src="/logo.jpg" alt="Maladcha Gauriputra">
+<img src="logo.jpg" alt="Maladcha Gauriputra">
 <span>Maladcha Gauriputra</span>
 </a>
 
 <div class="links">
 <a href="#seva">Seva</a>
 <a href="#events">Events</a>
-<a href="#gallery">Gallery</a>
+<a href="#gallery">Bappa</a>
 <a href="#contribute">Contribute</a>
 </div>
 
-<select class="lang" id="lang" aria-label="Language">
+<select class="lang" id="lang">
 <option value="en">EN</option>
 <option value="hi">हिं</option>
 <option value="mr">मर</option>
@@ -588,17 +1001,19 @@ input:focus{
 </div>
 </nav>
 
+
+<!-- HERO -->
 <header class="hero">
+
 <div class="container heroIn">
 
 <div class="eyebrow">
-Bappa Seva 2026
+BAPPA SEVA 2026
 </div>
 
 <h1 id="heroTitle">
 This year, let Bappa's arrival bring
-<span>joy</span>
-to someone's life.
+<span>joy</span> to someone's life.
 </h1>
 
 <p id="heroText">
@@ -607,6 +1022,7 @@ A voluntary community initiative by Maladcha Gauriputra.
 </p>
 
 <div class="actions">
+
 <a class="btn primary" href="#contribute" id="heroDonate">
 Contribute ₹101+
 </a>
@@ -614,78 +1030,123 @@ Contribute ₹101+
 <a class="btn secondary" href="#seva" id="heroExplore">
 Explore Seva
 </a>
+
 </div>
 
 </div>
+
+<div class="heroBadge">
+<div>
+<strong>2026</strong>
+<span>BAPPA<br>SEVA</span>
+</div>
+</div>
+
 </header>
+
 
 <main>
 
-<section id="seva">
-<div class="container">
+<!-- SEVA -->
+<section id="seva" class="sevaWrap">
+
+<div class="container reveal">
 
 <div class="sectionHead">
-<div class="kicker">Choose Your Seva</div>
-<h2 id="sevaTitle">From celebration to meaningful service.</h2>
+
+<div class="kicker">
+Choose Your Seva
+</div>
+
+<h2 id="sevaTitle">
+From celebration to meaningful service.
+</h2>
+
 <p id="sevaText">
 Contributions are voluntary. Support is directed towards practical
 community-service activities and verified partners where applicable.
 </p>
+
 </div>
+
 
 <div class="grid">
 
 <div class="card">
 <div class="icon">🍲</div>
 <h3>Food & Nutrition</h3>
-<p>Meal support, ration kits, fruits, milk and hospital-attendant meals.</p>
+<p>
+Meal support, ration kits, fruits, milk and hospital-attendant meals.
+</p>
 </div>
 
 <div class="card">
 <div class="icon">📚</div>
 <h3>Education</h3>
-<p>School bags, notebooks, stationery, uniforms, books and learning support.</p>
+<p>
+School bags, notebooks, stationery, uniforms, books and learning support.
+</p>
 </div>
 
 <div class="card">
 <div class="icon">🩺</div>
 <h3>Health</h3>
-<p>Checkups, screening camps and support through qualified or verified partners.</p>
+<p>
+Checkups, screening camps and support through qualified or verified partners.
+</p>
 </div>
 
 <div class="card">
 <div class="icon">👴</div>
 <h3>Senior Care</h3>
-<p>Meals, groceries, essentials, mobility aids and care activities.</p>
+<p>
+Meals, groceries, essentials, mobility aids and care activities.
+</p>
 </div>
 
 <div class="card">
 <div class="icon">🧒</div>
 <h3>Child Care</h3>
-<p>Support for verified child-care institutions and registered organisations.</p>
+<p>
+Support for verified child-care institutions and registered organisations.
+</p>
 </div>
 
 <div class="card">
 <div class="icon">🤝</div>
 <h3>Emergency Relief</h3>
-<p>Support during floods, fire, heatwave, winter and other emergencies through verified channels.</p>
+<p>
+Support during floods, fire, heatwave, winter and other emergencies
+through verified channels.
+</p>
 </div>
 
 </div>
 </div>
 </section>
 
+
+<!-- EVENTS -->
 <section id="events">
-<div class="container">
+
+<div class="container reveal">
 
 <div class="sectionHead">
-<div class="kicker">Utsav 2026</div>
-<h2>Darshan, seva & community moments.</h2>
+
+<div class="kicker">
+Utsav 2026
 </div>
+
+<h2>
+Darshan, seva & community moments.
+</h2>
+
+</div>
+
 
 <div class="events">
 
-<div class="card">
+<div class="eventCard">
 
 <div class="event">
 <div class="date">11 SEP</div>
@@ -729,60 +1190,127 @@ community-service activities and verified partners where applicable.
 
 </div>
 
-<div class="card">
-<h3>Darshan</h3>
-<p>14–20 September</p>
-<p style="margin-top:8px">9:30 AM – 9:30 PM</p>
 
-<p style="margin-top:18px">
+<div class="locationCard">
+
+<h3>Darshan</h3>
+
+<p>
+14–20 September<br>
+9:30 AM – 9:30 PM
+</p>
+
+<p>
 Ramleela Maidan,<br>
 Opp. Hanuman Mandir,<br>
 Malad East
 </p>
 
-<p style="margin-top:18px;color:#8f929b">
-Games & health camps: dates to be announced.
+<p>
+Games & health camps:
+dates to be announced.
 </p>
+
 </div>
 
 </div>
 </div>
 </section>
 
+
+<!-- GALLERY -->
 <section id="gallery">
-<div class="container">
+
+<div class="container reveal">
 
 <div class="sectionHead">
-<div class="kicker">Bappa</div>
-<h2>Moments of faith, culture & community.</h2>
+
+<div class="kicker">
+Bappa
 </div>
+
+<h2>
+Moments of faith, culture & community.
+</h2>
+
+<p>
+Real moments from Maladcha Gauriputra — shared with warmth,
+not just decoration.
+</p>
+
+</div>
+
 
 <div class="gallery">
 
-<img src="/bappa-gallery.png" alt="Bappa gallery">
+<div class="galleryFrame">
+
+<img
+class="galleryMain"
+src="bappa-hero.jpg"
+alt="Maladcha Gauriputra Bappa"
+>
+
+<div class="galleryCaption">
+Bappa Darshan • Maladcha Gauriputra
+</div>
+
+</div>
+
 
 <div class="gallerySide">
 
-<img src="/bappa-hero.jpg" alt="Bappa">
+<div class="galleryFrame">
 
-<img src="/logo.jpg" alt="Maladcha Gauriputra">
+<img
+src="bappa-2.jpg"
+alt="Bappa celebration"
+>
+
+<div class="galleryCaption">
+Utsav moments
+</div>
 
 </div>
+
+
+<div class="galleryFrame">
+
+<img
+src="bappa-3.jpg"
+alt="Bappa with devotees"
+>
+
+<div class="galleryCaption">
+Community & devotion
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 </div>
 </section>
 
-<section id="contribute">
-<div class="container">
+
+<!-- CONTRIBUTION -->
+<section id="contribute" class="contribute">
+
+<div class="container reveal">
 
 <div class="donateBox">
 
 <div class="donateCopy">
 
-<div class="kicker">Voluntary Contribution</div>
+<div class="kicker" style="color:#ffd58d">
+Voluntary Contribution
+</div>
 
-<h2>Seva starts with a small step.</h2>
+<h2>
+Seva starts with a small step.
+</h2>
 
 <p>
 Choose any amount from ₹101 onwards.
@@ -792,27 +1320,36 @@ Every contribution is voluntary.
 
 <div class="trust">
 <span>🔒</span>
+
 <span>
 Payment is processed by Cashfree.
-Your card/UPI details are handled on Cashfree's secure checkout
-and are never stored by this website.
+Your card/UPI details are handled on Cashfree's secure
+checkout and are never stored by this website.
 </span>
+
 </div>
 
 </div>
+
 
 <form class="form" id="payForm">
 
-<label for="name">Full Name</label>
+<label for="name">
+Full Name
+</label>
 
 <input
 id="name"
 required
 maxlength="100"
 autocomplete="name"
-placeholder="Your name">
+placeholder="Your name"
+>
 
-<label for="phone">Mobile Number</label>
+
+<label for="phone">
+Mobile Number
+</label>
 
 <input
 id="phone"
@@ -820,28 +1357,52 @@ required
 inputmode="numeric"
 maxlength="13"
 autocomplete="tel"
-placeholder="10-digit mobile number">
+placeholder="10-digit mobile number"
+>
 
-<label for="email">Email (optional)</label>
+
+<label for="email">
+Email (optional)
+</label>
 
 <input
 id="email"
 type="email"
 maxlength="160"
 autocomplete="email"
-placeholder="you@example.com">
+placeholder="you@example.com"
+>
 
-<label>Contribution Amount</label>
+
+<label>
+Contribution Amount
+</label>
 
 <div class="amounts">
 
-<button type="button" class="amountBtn active" data-amount="101">₹101</button>
+<button
+type="button"
+class="amountBtn active"
+data-amount="101">
+₹101
+</button>
 
-<button type="button" class="amountBtn" data-amount="501">₹501</button>
+<button
+type="button"
+class="amountBtn"
+data-amount="501">
+₹501
+</button>
 
-<button type="button" class="amountBtn" data-amount="1001">₹1001</button>
+<button
+type="button"
+class="amountBtn"
+data-amount="1001">
+₹1001
+</button>
 
 </div>
+
 
 <label for="amount">
 Custom Amount (minimum ₹101)
@@ -854,7 +1415,9 @@ min="101"
 max="1000000"
 step="1"
 value="101"
-required>
+required
+>
+
 
 <button
 class="btn primary"
@@ -862,6 +1425,7 @@ id="payBtn"
 type="submit">
 Continue to Secure Payment →
 </button>
+
 
 <div class="status" id="status"></div>
 
@@ -875,17 +1439,24 @@ By continuing, you confirm this is a voluntary contribution.
 </div>
 </section>
 
+
+<!-- CERTIFICATE -->
 <section id="certificate" class="certificate">
 
-<div class="container">
+<div class="container reveal">
 
 <div
 class="sectionHead"
-style="text-align:center;margin-left:auto;margin-right:auto">
+style="text-align:center;margin-left:auto;margin-right:auto"
+>
 
-<div class="kicker">Verified Contribution</div>
+<div class="kicker">
+Verified Contribution
+</div>
 
-<h2>Thank you for being part of Bappa Seva.</h2>
+<h2>
+Thank you for being part of Bappa Seva.
+</h2>
 
 <p>
 Your certificate is unlocked only after the server verifies
@@ -894,15 +1465,22 @@ the Cashfree order as PAID.
 
 </div>
 
+
 <div class="certWrap">
 
 <div class="cert" id="certCard">
 
-<div class="mini">CERTIFICATE OF CONTRIBUTION</div>
+<div class="mini">
+CERTIFICATE OF CONTRIBUTION
+</div>
 
-<h2>Thank You for Being Part of Bappa Seva 2026</h2>
+<h2>
+Thank You for Being Part of Bappa Seva 2026
+</h2>
 
-<div class="name" id="certName">—</div>
+<div class="name" id="certName">
+—
+</div>
 
 <p>
 This certificate is proudly presented for a voluntary contribution
@@ -932,19 +1510,26 @@ towards Bappa Seva 2026 by Maladcha Gauriputra.
 Maladcha Gauriputra – Malad Sarvajanik Utsav Mandal
 </p>
 
-<p>Ganpati Bappa Morya 🚩</p>
+<p>
+Ganpati Bappa Morya 🚩
+</p>
 
 </div>
 
 </div>
+
 
 <div class="certActions">
 
-<button class="btn" id="downloadCert">
+<button
+class="btn"
+id="downloadCert">
 Download Certificate
 </button>
 
-<a class="btn secondary" href="#contribute">
+<a
+class="btn secondary"
+href="#contribute">
 Back
 </a>
 
@@ -955,17 +1540,21 @@ Back
 
 </main>
 
+
+<!-- FOOTER -->
 <footer class="footer">
 
 <div class="container footin">
 
 <div>
-<strong style="color:#fff">Maladcha Gauriputra</strong><br>
+<strong>Maladcha Gauriputra</strong>
+<br>
 Malad Sarvajanik Utsav Mandal
 </div>
 
 <div>
-Ramleela Maidan, Opp. Hanuman Mandir, Malad East<br>
+Ramleela Maidan, Opp. Hanuman Mandir, Malad East
+<br>
 © 2026 Maladcha Gauriputra
 </div>
 
@@ -973,15 +1562,19 @@ Ramleela Maidan, Opp. Hanuman Mandir, Malad East<br>
 
 </footer>
 
+
+<!-- PAYMENT MODAL -->
 <div class="modal" id="modal">
 
 <div class="modalBox">
 
 <div class="spinner"></div>
 
-<strong id="modalText">Creating secure payment…</strong>
+<strong id="modalText">
+Creating secure payment…
+</strong>
 
-<p style="color:var(--muted);font-size:13px">
+<p style="color:#76685d;font-size:13px">
 Please wait.
 </p>
 
@@ -989,11 +1582,17 @@ Please wait.
 
 </div>
 
+
 <script>
+
+/* CASHFREE */
 
 const cashfree = Cashfree({
   mode:"production"
 });
+
+
+/* PAYMENT FORM */
 
 const form = document.getElementById("payForm");
 const amount = document.getElementById("amount");
@@ -1001,20 +1600,39 @@ const statusBox = document.getElementById("status");
 const modal = document.getElementById("modal");
 const modalText = document.getElementById("modalText");
 
+
 function setStatus(text,type="error"){
-  statusBox.textContent=text;
-  statusBox.className="status show "+type;
+
+  statusBox.textContent = text;
+
+  statusBox.className =
+    "status show " + type;
+
 }
 
-document.querySelectorAll(".amountBtn").forEach(btn=>{
+
+/* QUICK AMOUNTS */
+
+document
+.querySelectorAll(".amountBtn")
+.forEach(btn => {
+
   btn.addEventListener("click",()=>{
-    document.querySelectorAll(".amountBtn")
-      .forEach(x=>x.classList.remove("active"));
+
+    document
+    .querySelectorAll(".amountBtn")
+    .forEach(x => x.classList.remove("active"));
 
     btn.classList.add("active");
-    amount.value=btn.dataset.amount;
+
+    amount.value = btn.dataset.amount;
+
   });
+
 });
+
+
+/* CREATE PAYMENT */
 
 form.addEventListener("submit",async e=>{
 
@@ -1022,47 +1640,88 @@ form.addEventListener("submit",async e=>{
 
   statusBox.className="status";
 
-  const payload={
-    name:document.getElementById("name").value.trim(),
-    phone:document.getElementById("phone").value.trim(),
-    email:document.getElementById("email").value.trim(),
-    amount:Number(amount.value)
+  const payload = {
+
+    name:
+      document.getElementById("name").value.trim(),
+
+    phone:
+      document.getElementById("phone").value.trim(),
+
+    email:
+      document.getElementById("email").value.trim(),
+
+    amount:
+      Number(amount.value)
+
   };
 
-  modalText.textContent="Creating secure payment…";
+
+  if(payload.amount < 101){
+
+    setStatus(
+      "Minimum contribution amount is ₹101."
+    );
+
+    return;
+  }
+
+
+  modalText.textContent =
+    "Creating secure payment…";
+
   modal.classList.add("show");
+
 
   try{
 
-    const response=await fetch("/api/create-order",{
-      method:"POST",
-      headers:{
-        "content-type":"application/json"
-      },
-      body:JSON.stringify(payload)
-    });
+    const response =
+      await fetch(
+        "/api/create-order",
+        {
+          method:"POST",
+          headers:{
+            "content-type":"application/json"
+          },
+          body:JSON.stringify(payload)
+        }
+      );
 
-    const data=await response.json();
+
+    const data =
+      await response.json();
+
 
     if(!response.ok || !data.ok){
+
       throw new Error(
-        data.error || "Unable to create payment."
+        data.error ||
+        "Unable to create payment."
       );
+
     }
+
 
     modal.classList.remove("show");
 
-    const result=await cashfree.checkout({
-      paymentSessionId:data.payment_session_id,
-      redirectTarget:"_self"
-    });
+
+    const result =
+      await cashfree.checkout({
+        paymentSessionId:
+          data.payment_session_id,
+        redirectTarget:"_self"
+      });
+
 
     if(result && result.error){
+
       setStatus(
         result.error.message ||
         "Payment could not be opened."
       );
+
     }
+
 
   }catch(error){
 
@@ -1077,63 +1736,92 @@ form.addEventListener("submit",async e=>{
 
 });
 
+
+/* VERIFY PAYMENT */
+
 async function verifyReturnedPayment(orderId){
 
-  modalText.textContent="Verifying payment securely…";
+  modalText.textContent =
+    "Verifying payment securely…";
+
   modal.classList.add("show");
+
 
   try{
 
-    const response=await fetch(
-      "/api/order-status?order_id="+
-      encodeURIComponent(orderId),
-      {
-        cache:"no-store"
-      }
-    );
+    const response =
+      await fetch(
+        "/api/order-status?order_id="+
+        encodeURIComponent(orderId),
+        {
+          cache:"no-store"
+        }
+      );
 
-    const data=await response.json();
+
+    const data =
+      await response.json();
+
 
     modal.classList.remove("show");
 
+
     if(!response.ok || !data.ok){
+
       throw new Error(
         data.error ||
         "Payment verification failed."
       );
+
     }
+
 
     if(!data.paid){
 
       setStatus(
         "Payment status: "+
         data.order_status+
-        ". If your payment was completed, please wait a moment and refresh.",
-        "error"
+        ". If your payment was completed, please wait a moment and refresh."
       );
 
-      history.replaceState({}, "", "/");
+      history.replaceState(
+        {},
+        "",
+        "/"
+      );
 
       document
-        .getElementById("contribute")
-        .scrollIntoView();
+      .getElementById("contribute")
+      .scrollIntoView();
 
       return;
+
     }
 
-    document.getElementById("certName").textContent=
-      data.customer_name || "Contributor";
 
-    document.getElementById("certAmount").textContent=
+    document.getElementById("certName")
+      .textContent =
+      data.customer_name ||
+      "Contributor";
+
+
+    document.getElementById("certAmount")
+      .textContent =
       "₹"+
-      Number(data.amount).toLocaleString("en-IN");
+      Number(data.amount)
+      .toLocaleString("en-IN");
 
-    document.getElementById("certNo").textContent=
+
+    document.getElementById("certNo")
+      .textContent =
       data.certificate_number;
 
-    document.getElementById("certDate").textContent=
+
+    document.getElementById("certDate")
+      .textContent =
       new Date(
-        data.created_at || Date.now()
+        data.created_at ||
+        Date.now()
       ).toLocaleDateString(
         "en-IN",
         {
@@ -1143,19 +1831,28 @@ async function verifyReturnedPayment(orderId){
         }
       );
 
-    document
-      .getElementById("certificate")
-      .classList.add("show");
 
     document
-      .getElementById("certificate")
-      .scrollIntoView({
-        behavior:"smooth"
-      });
+    .getElementById("certificate")
+    .classList.add("show");
 
-    history.replaceState({}, "", "/");
 
-    window.__certificateData=data;
+    document
+    .getElementById("certificate")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+
+    history.replaceState(
+      {},
+      "",
+      "/"
+    );
+
+
+    window.__certificateData = data;
+
 
   }catch(error){
 
@@ -1163,64 +1860,81 @@ async function verifyReturnedPayment(orderId){
 
     setStatus(
       error.message ||
-      "Unable to verify payment.",
-      "error"
+      "Unable to verify payment."
     );
 
-    history.replaceState({}, "", "/");
+    history.replaceState(
+      {},
+      "",
+      "/"
+    );
+
   }
+
 }
 
-document.getElementById("downloadCert")
+
+/* CERTIFICATE DOWNLOAD */
+
+document
+.getElementById("downloadCert")
 .addEventListener("click",()=>{
 
-  const data=window.__certificateData;
+  const data =
+    window.__certificateData;
 
   if(!data)return;
 
-  const safe=value=>
+
+  const safe = value =>
     String(value)
-      .replace(/&/g,"&amp;")
-      .replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;")
-      .replace(/'/g,"&apos;");
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&apos;");
 
-  const date=new Date(
-    data.created_at || Date.now()
-  ).toLocaleDateString(
-    "en-IN",
-    {
-      day:"2-digit",
-      month:"long",
-      year:"numeric"
-    }
-  );
 
-  const svg=`
-<svg xmlns="http://www.w3.org/2000/svg"
+  const date =
+    new Date(
+      data.created_at ||
+      Date.now()
+    ).toLocaleDateString(
+      "en-IN",
+      {
+        day:"2-digit",
+        month:"long",
+        year:"numeric"
+      }
+    );
+
+
+  const svg = `
+
+<svg
+xmlns="http://www.w3.org/2000/svg"
 width="1600"
 height="1100"
 viewBox="0 0 1600 1100">
 
-<defs>
-<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-<stop stop-color="#fffaf0"/>
-<stop offset="1" stop-color="#f4ead4"/>
-</linearGradient>
-</defs>
+<rect
+width="1600"
+height="1100"
+fill="#7e2526"/>
 
-<rect width="1600" height="1100" fill="#111318"/>
-
-<rect x="35" y="35"
+<rect
+x="35"
+y="35"
 width="1530"
 height="1030"
 rx="24"
-fill="url(#g)"
+fill="#fffaf0"
 stroke="#c89a46"
 stroke-width="8"/>
 
-<rect x="60" y="60"
+<rect
+x="60"
+y="60"
 width="1480"
 height="980"
 rx="18"
@@ -1228,7 +1942,9 @@ fill="none"
 stroke="#d5b56e"
 stroke-width="2"/>
 
-<text x="800" y="175"
+<text
+x="800"
+y="175"
 text-anchor="middle"
 font-family="Georgia,serif"
 font-size="30"
@@ -1237,7 +1953,9 @@ fill="#8d6b31">
 CERTIFICATE OF CONTRIBUTION
 </text>
 
-<text x="800" y="270"
+<text
+x="800"
+y="270"
 text-anchor="middle"
 font-family="Georgia,serif"
 font-size="58"
@@ -1246,7 +1964,9 @@ fill="#211a10">
 Thank You for Being Part of Bappa Seva 2026
 </text>
 
-<text x="800" y="395"
+<text
+x="800"
+y="395"
 text-anchor="middle"
 font-family="Georgia,serif"
 font-size="62"
@@ -1255,7 +1975,9 @@ fill="#8d5f16">
 ${safe(data.customer_name || "Contributor")}
 </text>
 
-<text x="800" y="470"
+<text
+x="800"
+y="470"
 text-anchor="middle"
 font-family="Arial,sans-serif"
 font-size="25"
@@ -1263,7 +1985,9 @@ fill="#514a3c">
 This certificate is proudly presented for a voluntary contribution
 </text>
 
-<text x="800" y="510"
+<text
+x="800"
+y="510"
 text-anchor="middle"
 font-family="Arial,sans-serif"
 font-size="25"
@@ -1271,7 +1995,9 @@ fill="#514a3c">
 towards Bappa Seva 2026 by Maladcha Gauriputra.
 </text>
 
-<text x="390" y="635"
+<text
+x="390"
+y="635"
 text-anchor="middle"
 font-family="Arial,sans-serif"
 font-size="22"
@@ -1279,7 +2005,9 @@ fill="#8d5f16">
 CONTRIBUTION
 </text>
 
-<text x="390" y="680"
+<text
+x="390"
+y="680"
 text-anchor="middle"
 font-family="Arial,sans-serif"
 font-size="32"
@@ -1288,7 +2016,9 @@ fill="#211a10">
 ₹${Number(data.amount).toLocaleString("en-IN")}
 </text>
 
-<text x="800" y="635"
+<text
+x="800"
+y="635"
 text-anchor="middle"
 font-family="Arial,sans-serif"
 font-size="22"
@@ -1296,7 +2026,9 @@ fill="#8d5f16">
 CERTIFICATE NO.
 </text>
 
-<text x="800" y="680"
+<text
+x="800"
+y="680"
 text-anchor="middle"
 font-family="Arial,sans-serif"
 font-size="24"
@@ -1304,7 +2036,9 @@ fill="#211a10">
 ${safe(data.certificate_number)}
 </text>
 
-<text x="1210" y="635"
+<text
+x="1210"
+y="635"
 text-anchor="middle"
 font-family="Arial,sans-serif"
 font-size="22"
@@ -1312,7 +2046,9 @@ fill="#8d5f16">
 DATE
 </text>
 
-<text x="1210" y="680"
+<text
+x="1210"
+y="680"
 text-anchor="middle"
 font-family="Arial,sans-serif"
 font-size="26"
@@ -1320,7 +2056,9 @@ fill="#211a10">
 ${safe(date)}
 </text>
 
-<text x="800" y="820"
+<text
+x="800"
+y="820"
 text-anchor="middle"
 font-family="Georgia,serif"
 font-size="28"
@@ -1329,7 +2067,9 @@ fill="#211a10">
 Maladcha Gauriputra – Malad Sarvajanik Utsav Mandal
 </text>
 
-<text x="800" y="875"
+<text
+x="800"
+y="875"
 text-anchor="middle"
 font-family="Arial,sans-serif"
 font-size="26"
@@ -1337,7 +2077,9 @@ fill="#514a3c">
 Ganpati Bappa Morya 🚩
 </text>
 
-<text x="800" y="970"
+<text
+x="800"
+y="970"
 text-anchor="middle"
 font-family="Arial,sans-serif"
 font-size="20"
@@ -1347,86 +2089,232 @@ Voluntary contribution • Payment verified server-side
 
 </svg>`;
 
-  const blob=new Blob(
-    [svg],
-    {type:"image/svg+xml;charset=utf-8"}
-  );
 
-  const link=document.createElement("a");
+  const blob =
+    new Blob(
+      [svg],
+      {
+        type:
+        "image/svg+xml;charset=utf-8"
+      }
+    );
 
-  link.href=URL.createObjectURL(blob);
 
-  link.download=
-    (data.certificate_number ||
-    "bappa-seva-certificate")+
-    ".svg";
+  const link =
+    document.createElement("a");
+
+  link.href =
+    URL.createObjectURL(blob);
+
+  link.download =
+    (
+      data.certificate_number ||
+      "bappa-seva-certificate"
+    )+".svg";
 
   link.click();
 
+
   setTimeout(
-    ()=>URL.revokeObjectURL(link.href),
+    ()=>{
+      URL.revokeObjectURL(
+        link.href
+      );
+    },
     1000
   );
 
 });
 
-const params=new URLSearchParams(
-  location.search
-);
 
-const orderId=params.get("order_id");
+/* RETURN FROM CASHFREE */
+
+const params =
+  new URLSearchParams(
+    location.search
+  );
+
+const orderId =
+  params.get("order_id");
+
 
 if(
   params.get("payment")==="return" &&
   orderId
 ){
+
   verifyReturnedPayment(orderId);
+
 }
+
 
 /* LANGUAGE */
 
-const translations={
+const translations = {
 
 en:{
-  heroTitle:"This year, let Bappa's arrival bring <span>joy</span> to someone's life.",
-  heroText:"Utsav sirf sajra nahi… yandaa seva bhi. A voluntary community initiative by Maladcha Gauriputra.",
-  heroDonate:"Contribute ₹101+",
-  heroExplore:"Explore Seva",
-  sevaTitle:"From celebration to meaningful service.",
-  sevaText:"Contributions are voluntary. Support is directed towards practical community-service activities and verified partners where applicable."
+heroTitle:
+"This year, let Bappa's arrival bring <span>joy</span> to someone's life.",
+heroText:
+"Utsav sirf sajra nahi… yandaa seva bhi. A voluntary community initiative by Maladcha Gauriputra.",
+heroDonate:
+"Contribute ₹101+",
+heroExplore:
+"Explore Seva",
+sevaTitle:
+"From celebration to meaningful service.",
+sevaText:
+"Contributions are voluntary. Support is directed towards practical community-service activities and verified partners where applicable."
 },
 
 hi:{
-  heroTitle:"इस साल बप्पा का आगमन किसी के जीवन में <span>खुशियां</span> लेकर आए।",
-  heroText:"उत्सव सिर्फ मनाना नहीं… इस बार सेवा भी। मालाडचा गौरीपुत्र की एक स्वैच्छिक सामुदायिक पहल।",
-  heroDonate:"₹101+ योगदान करें",
-  heroExplore:"सेवा देखें",
-  sevaTitle:"उत्सव से सार्थक सेवा तक।",
-  sevaText:"योगदान पूरी तरह स्वैच्छिक है। सहायता व्यावहारिक सामुदायिक सेवा और जहां लागू हो, सत्यापित साझेदारों के माध्यम से की जाती है।"
+heroTitle:
+"इस साल बप्पा का आगमन किसी के जीवन में <span>खुशियां</span> लेकर आए।",
+heroText:
+"उत्सव सिर्फ मनाना नहीं… इस बार सेवा भी। मालाडचा गौरीपुत्र की एक स्वैच्छिक सामुदायिक पहल।",
+heroDonate:
+"₹101+ योगदान करें",
+heroExplore:
+"सेवा देखें",
+sevaTitle:
+"उत्सव से सार्थक सेवा तक।",
+sevaText:
+"योगदान पूरी तरह स्वैच्छिक है। सहायता व्यावहारिक सामुदायिक सेवा और जहां लागू हो, सत्यापित साझेदारों के माध्यम से की जाती है।"
 },
 
 mr:{
-  heroTitle:"यंदा बाप्पाचं आगमन कोणाच्या तरी आयुष्यात <span>आनंद</span> घेऊन येऊ दे.",
-  heroText:"उत्सव फक्त साजरा नाही… यंदा सेवा देखील. मालाडचा गौरीपुत्रची एक स्वैच्छिक सामाजिक सेवा उपक्रम.",
-  heroDonate:"₹101+ योगदान द्या",
-  heroExplore:"सेवा पहा",
-  sevaTitle:"उत्सवातून अर्थपूर्ण सेवेकडे.",
-  sevaText:"योगदान पूर्णपणे स्वैच्छिक आहे. मदत व्यावहारिक सामाजिक सेवा आणि आवश्यकतेनुसार सत्यापित भागीदारांमार्फत केली जाते."
+heroTitle:
+"यंदा बाप्पाचं आगमन कोणाच्या तरी आयुष्यात <span>आनंद</span> घेऊन येऊ दे.",
+heroText:
+"उत्सव फक्त साजरा नाही… यंदा सेवा देखील. मालाडचा गौरीपुत्रची एक स्वैच्छिक सामाजिक सेवा उपक्रम.",
+heroDonate:
+"₹101+ योगदान द्या",
+heroExplore:
+"सेवा पहा",
+sevaTitle:
+"उत्सवातून अर्थपूर्ण सेवेकडे.",
+sevaText:
+"योगदान पूर्णपणे स्वैच्छिक आहे. मदत व्यावहारिक सामाजिक सेवा आणि आवश्यकतेनुसार सत्यापित भागीदारांमार्फत केली जाते."
 }
 
 };
 
-document.getElementById("lang")
+
+document
+.getElementById("lang")
 .addEventListener("change",e=>{
 
-  const t=translations[e.target.value];
+  const t =
+    translations[
+      e.target.value
+    ];
 
-  document.getElementById("heroTitle").innerHTML=t.heroTitle;
-  document.getElementById("heroText").textContent=t.heroText;
-  document.getElementById("heroDonate").textContent=t.heroDonate;
-  document.getElementById("heroExplore").textContent=t.heroExplore;
-  document.getElementById("sevaTitle").textContent=t.sevaTitle;
-  document.getElementById("sevaText").textContent=t.sevaText;
+  document
+  .getElementById("heroTitle")
+  .innerHTML =
+  t.heroTitle;
+
+  document
+  .getElementById("heroText")
+  .textContent =
+  t.heroText;
+
+  document
+  .getElementById("heroDonate")
+  .textContent =
+  t.heroDonate;
+
+  document
+  .getElementById("heroExplore")
+  .textContent =
+  t.heroExplore;
+
+  document
+  .getElementById("sevaTitle")
+  .textContent =
+  t.sevaTitle;
+
+  document
+  .getElementById("sevaText")
+  .textContent =
+  t.sevaText;
+
+});
+
+
+/* SCROLL ANIMATION */
+
+const observer =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target
+          .classList
+          .add("visible");
+
+          observer.unobserve(
+            entry.target
+          );
+
+        }
+
+      });
+
+    },
+    {
+      threshold:.12
+    }
+  );
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(el =>
+  observer.observe(el)
+);
+
+
+/* 3D CARDS */
+
+document
+.querySelectorAll(".card")
+.forEach(card=>{
+
+  card.addEventListener(
+    "pointermove",
+    e=>{
+
+      const r =
+        card.getBoundingClientRect();
+
+      const x =
+        (e.clientX-r.left) /
+        r.width-.5;
+
+      const y =
+        (e.clientY-r.top) /
+        r.height-.5;
+
+      card.style.transform =
+      `perspective(900px)
+       rotateX(${(-y*5).toFixed(2)}deg)
+       rotateY(${(x*5).toFixed(2)}deg)
+       translateY(-4px)`;
+
+    }
+  );
+
+
+  card.addEventListener(
+    "pointerleave",
+    ()=>{
+      card.style.transform="";
+    }
+  );
 
 });
 
